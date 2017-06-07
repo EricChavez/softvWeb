@@ -5,9 +5,9 @@
     .module('softvApp')
     .controller('EditarMaestroCtrl', EditarMaestroCtrl);
 
-  EditarMaestroCtrl.inject = ['$uibModal', '$rootScope', 'corporativoFactory', 'cajasFactory', ' $filter', 'ngNotify', '$state', '$stateParams'];
+  EditarMaestroCtrl.inject = ['$uibModal', '$rootScope', 'corporativoFactory', 'cajasFactory', ' $filter', 'ngNotify', '$state', '$stateParams', 'ContratoMaestroFactory'];
 
-  function EditarMaestroCtrl($uibModal, $rootScope, corporativoFactory, cajasFactory, $filter, ngNotify, $state, $stateParams) {
+  function EditarMaestroCtrl($uibModal, $rootScope, corporativoFactory, cajasFactory, $filter, ngNotify, $state, $stateParams, ContratoMaestroFactory) {
     var vm = this;
     var vm = this;
     vm.abrirContratos = abrirContratos;
@@ -18,6 +18,7 @@
     vm.MuestraBanco = false;
     vm.MuestraAutorizacion = false;
     vm.desconexion = desconexion;
+    vm.generarFacturaPrueba = generarFacturaPrueba;
 
     this.$onInit = function () {
       corporativoFactory.singleContrato($stateParams.id).then(function (data) {
@@ -145,7 +146,7 @@
         var date = vm.contratoMaestro.FechaFac.replace(/[^0-9\.]+/g, '');
         var pattern = /(\d{2})(\d{2})(\d{4})/;
         date = new Date(date.replace(pattern, '$2/$1/$3'));
-        vm.fecha = date;
+        vm.fecha = vm.contratoMaestro.FechaFac;
         vm.autorizacion = vm.contratoMaestro.Referencia2;
         vm.EntreCalles = vm.contratoMaestro.EntreCalles;
         vm.Telefono = vm.contratoMaestro.Tel;
@@ -274,7 +275,7 @@
           'DiasCredito': vm.diascredito,
           'DiasGracia': vm.diasgracia,
           'LimiteCredito': vm.limitecredito,
-          'FechaFac': auxFecha,
+          'FechaFac': vm.fecha+'/01/2000',
           'PagoEdoCuetna': vm.pagEdo,
           'PagoFac': vm.pagFac,
           'TipoCorteCli': vm.tipocorte.Id,
@@ -324,6 +325,16 @@
         vm.MuestraBanco = false;
         vm.MuestraAutorizacion = false;
       }
+    }
+
+    function generarFacturaPrueba(contrato) {
+      ContratoMaestroFactory.GetGeneraFacturaMaestroPrueba(contrato).then(function (data) {
+          if (data.GetGeneraFacturaMaestroPruebaResult.Error == 0) {
+            ngNotify.set('Se ha generado la factura con éxito.', 'info');
+          } else {
+            ngNotify.set('No se generó la factura.', 'error');
+          }
+        });
     }
   }
 })();
