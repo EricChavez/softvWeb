@@ -1,0 +1,18 @@
+#appheader {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.appheader-title {
+  font-weight: bold;
+  border: none;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #009688;
+}
+
+.appheader-navigation {
+  font-size: 14px;
+  margin-left: 10px;
+  color: #969c9c;
+}

@@ -20,7 +20,7 @@
         <h4 class="text-center">Datos Contrato Maestro</h4>
       </div>
       <div class="col-md-6" style="padding-top:10px;">
-        <p class="text-right"><a class="btn ink-reaction btn-flat btn-primary" ng-click="$ctrl.abrirContratos()">Contratos Ligados</a></p>
+        <p class="text-right"><a class="btn ink-reaction btn-flat btn-primary" ng-click="$ctrl.abrirContratos()"><i class="fa fa-link" aria-hidden="true"></i> Contratos Ligados</a></p>
       </div>
       <div class="col-md-6">
 
@@ -171,7 +171,7 @@
         <div class="col-md-12">
           <label class="col-md-3 control-label blod">Nombre Comercial:</label>
           <div class="col-md-9" style="padding-left:-10px;">
-            <input type="text" name="nombrecomercial" validate-on="dirty" class="form-control imput-sm" ng-model="$ctrl.nombrecomercial"
+            <input type="text" name="nombrecomercial" validate-on="dirty" class="form-control input-sm" ng-model="$ctrl.nombrecomercial"
               required-message="'Este campo es obligatorio.'" required>
           </div>
         </div>
@@ -307,16 +307,16 @@
       <div class="col-md-12 btn-group" ng-if="$ctrl.contratoMaestro.lstCliS.length > 0">
         <br>
         <div class="col-md-3">
-          <button type="button" class="btn btn-default btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('desconexion')">Desconexión</button>
+          <button type="button" class="btn btn-warning btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('desconexion')">Desconexión</button>
         </div>
         <div class="col-md-3">
-          <button type="button" class="btn btn-default btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('reconexion')">Reconexión</button>
+          <button type="button" class="btn btn-warning btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('reconexion')">Reconexión</button>
         </div>
         <div class="col-md-3">
-          <button type="button" class="btn btn-default btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('ordenes')">Generar Ordenes</button>
+          <button type="button" class="btn btn-warning btn-block" ng-disabled="$ctrl.bloqueageneracion" ng-click="$ctrl.desconexion('ordenes')">Generar Ordenes</button>
         </div>
         <div class="col-md-3">
-          <button type="button" class="btn btn-default btn-block" ng-click="$ctrl.generarFacturaPrueba($ctrl.contratoMaestro.IdContratoMaestro)">Generar Factura</button>
+          <button type="button" class="btn btn-warning btn-block" ng-click="$ctrl.generarFacturaPrueba($ctrl.contratoMaestro.IdContratoMaestro)">Generar Factura</button>
         </div>
       </div>
 

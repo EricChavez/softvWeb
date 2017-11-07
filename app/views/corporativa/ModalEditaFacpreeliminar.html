@@ -1,6 +1,6 @@
 <form angular-validator-submit="$ctrl.ok()" name="contratoForm" novalidate angular-validator>
   <div class="modal-header">
-    <button class="close" aria-label="Close" type="button">×</button>
+    <button class="close" aria-label="Close" type="button" ng-click="$ctrl.cancel()">×</button>
     <h4 class="modal-title"><i class="fa fa-thumb-tack"></i> Conceptos de Factura #{{$ctrl.clave}} </h4>
   </div>
   <div class="modal-body" style="overflow-y: scroll; max-height: 500px;">
