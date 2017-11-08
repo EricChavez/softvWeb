@@ -844,7 +844,7 @@ angular.module('softvApp')
             objPrincipal = {}; objRangoFechas = {};
             estatusCliente = {}; objParametros = {};
             objParametros.conectado = 0, objParametros.Fuera = 0, objParametros.Susp = 0, objParametros.Insta = 0,
-                objParametros.Desconect = 0, objParametros.DescTmp = 0, objParametros.baja = 0;
+            objParametros.Desconect = 0, objParametros.DescTmp = 0, objParametros.baja = 0;
             vm.anioC = { value: 2010 };
             vm.anioC2 = { value: 2010 };
 
@@ -1702,25 +1702,27 @@ angular.module('softvApp')
 
                     if (reporteSeleccionado == 13)  // 13 ciudad
                     {
-                        if (elOrden == 1) {
-                            if (laBaja == 0)//cualquiera SIN bajas
-                            {
-                                urlReporte = data.GetReporteDig_12Result; // url = "ReportesVarios/Reporte_Digital_12"; 
-                            }
-                            else if (laBaja == 1) //cualquiera CON bajas
-                            {
-                                urlReporte = data.GetReporteDig_13Result; // url = "ReportesVarios/Reporte_Digital_13"; 
-                            }
-                        }
-                        else if (elOrden == 2) {
-                            if (laBaja == 0)//cualquiera SIN bajas
-                            {
-                                urlReporte = data.GetReporteDig_15Result; // url = "ReportesVarios/Reporte_Digital_15";
-                            }
-                            if (laBaja == 1)  //cualquiera CON bajas
-                            {
-                                urlReporte = data.GetReporteDig_14Result; // url = "ReportesVarios/Reporte_Digital_14"; 
-                            }
+                        switch(elOrden){
+                            case "1":
+                                if (laBaja == 0)//cualquiera SIN bajas
+                                {
+                                    urlReporte = data.GetReporteDig_12Result; // url = "ReportesVarios/Reporte_Digital_12"; 
+                                }
+                                else if (laBaja == 1) //cualquiera CON bajas
+                                {
+                                    urlReporte = data.GetReporteDig_13Result; // url = "ReportesVarios/Reporte_Digital_13"; 
+                                }
+                                break;
+                            case "2":           
+                                if (laBaja == 0)//cualquiera SIN bajas
+                                {
+                                    urlReporte = data.GetReporteDig_15Result; // url = "ReportesVarios/Reporte_Digital_15";
+                                }
+                                if (laBaja == 1)  //cualquiera CON bajas
+                                {
+                                    urlReporte = data.GetReporteDig_14Result; // url = "ReportesVarios/Reporte_Digital_14"; 
+                                }
+                                break;
                         }
                     }
                     else if (reporteSeleccionado == 14) // 14 resumen por colonia y status
@@ -1737,52 +1739,52 @@ angular.module('softvApp')
                             else if (reporteSeleccionado == 12)// 12 paquetes de cortesía
                             {
                                 urlReporte = data.GetReporteDig_4Result; //url = "ReportesVarios/Reporte_Digital_4";
-                            }
-                            if (elOrden == 1) //Contrato
-                            {
-                                if ((reporteSeleccionado == 3) || (reporteSeleccionado == 10))//3 al corriente, 10 por instalar
-                                {
-                                    urlReporte = data.GetReporteDig_2Result; //url = "ReportesVarios/Reporte_Digital_2"; 
-                                }
-                                else if (reporteSeleccionado == 4) // 4 adelantados
-                                {
-                                    urlReporte = data.GetReporteDig_3Result;//url = "ReportesVarios/Reporte_Digital_3"; 
-                                }
+                            }                                                        
+                            switch(elOrden){
+                                case "1":
+                                    if ((reporteSeleccionado == 3) || (reporteSeleccionado == 10))//3 al corriente, 10 por instalar
+                                    {
+                                        urlReporte = data.GetReporteDig_2Result; //url = "ReportesVarios/Reporte_Digital_2"; 
+                                    }
+                                    else if (reporteSeleccionado == 4) // 4 adelantados
+                                    {
+                                        urlReporte = data.GetReporteDig_3Result;//url = "ReportesVarios/Reporte_Digital_3"; 
+                                    }
 
-                                else if (reporteSeleccionado == 9) //9 cancelaciones
-                                {
+                                    else if (reporteSeleccionado == 9) //9 cancelaciones
+                                    {
 
-                                    urlReporte = data.GetReporteDig_6Result; //url = "ReportesVarios/Reporte_Digital_6"; 
-                                }
-                                else if ((reporteSeleccionado == 5) || (reporteSeleccionado == 8) || (reporteSeleccionado == 11))//5 contrataciones principales8 instalaciones, 11 fueras de área
-                                {
+                                        urlReporte = data.GetReporteDig_6Result; //url = "ReportesVarios/Reporte_Digital_6"; 
+                                    }
+                                    else if ((reporteSeleccionado == 5) || (reporteSeleccionado == 8) || (reporteSeleccionado == 11))//5 contrataciones principales8 instalaciones, 11 fueras de área
+                                    {
 
-                                    urlReporte = data.GetReporteDig_16Result; //url = "ReportesVarios/Reporte_Digital_16"; 
-                                }
+                                        urlReporte = data.GetReporteDig_16Result; //url = "ReportesVarios/Reporte_Digital_16"; 
+                                    }
 
-                                else if (reporteSeleccionado == 6)// 6 contrataciones
-                                {
-                                    urlReporte = data.GetReporteDig_7Result; //url = "ReportesVarios/Reporte_Digital_7"; 
-                                }
-                            }
-                            else if (elOrden == 2) // Colonia y calle
-                            {
-                                if ((reporteSeleccionado == 3) || (reporteSeleccionado == 10))//3 al corriente, 10 por instalar
-                                {
-                                    urlReporte = data.GetReporteDig_8Result; //url = "ReportesVarios/Reporte_Digital_8"; 
-                                }
-                                else if (reporteSeleccionado == 4)// 4 adelantados
-                                {
-                                    urlReporte = data.GetReporteDig_9Result; //url = "ReportesVarios/Reporte_Digital_9"; 
-                                }
-                                else if ((reporteSeleccionado == 5) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
-                                {
-                                    urlReporte = data.GetReporteDig_11Result; //url = "ReportesVarios/Reporte_Digital_11"; 
-                                }
-                                else if (reporteSeleccionado == 6)// 6 contrataciones
-                                {
-                                    urlReporte = data.GetReporteDig_10Result;//url = "ReportesVarios/Reporte_Digital_10"; 
-                                }
+                                    else if (reporteSeleccionado == 6)// 6 contrataciones
+                                    {
+                                        urlReporte = data.GetReporteDig_7Result; //url = "ReportesVarios/Reporte_Digital_7"; 
+                                    }
+                                    break;
+                                case "2":           
+                                    if ((reporteSeleccionado == 3) || (reporteSeleccionado == 10))//3 al corriente, 10 por instalar
+                                    {
+                                        urlReporte = data.GetReporteDig_8Result; //url = "ReportesVarios/Reporte_Digital_8"; 
+                                    }
+                                    else if (reporteSeleccionado == 4)// 4 adelantados
+                                    {
+                                        urlReporte = data.GetReporteDig_9Result; //url = "ReportesVarios/Reporte_Digital_9"; 
+                                    }
+                                    else if ((reporteSeleccionado == 5) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+                                    {
+                                        urlReporte = data.GetReporteDig_11Result; //url = "ReportesVarios/Reporte_Digital_11"; 
+                                    }
+                                    else if (reporteSeleccionado == 6)// 6 contrataciones
+                                    {
+                                        urlReporte = data.GetReporteDig_10Result;//url = "ReportesVarios/Reporte_Digital_10"; 
+                                    }
+                                    break;
                             }
                         }
                         else if (servSelec == 2)// ---------------- S E R V I C I O   I N T E R N E T
@@ -1800,27 +1802,27 @@ angular.module('softvApp')
                             {
                                 urlReporte = data.GetReporteInt_7Result; //url = "ReportesVarios/Reporte_Internet_7"; 
                             }
-                            if (elOrden == 1) //Contrato
-                            {
-                                if ((reporteSeleccionado == 3) || (reporteSeleccionado == 4) || (reporteSeleccionado == 10))//3 al corriente, 4 adelantados, 10 por instalar
-                                {
-                                    urlReporte = data.GetReporteInt_3Result;//url = "ReportesVarios/Reporte_Internet_3"; 
-                                }
-                                else if ((reporteSeleccionado == 6) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
-                                {
-                                    urlReporte = data.GetReporteInt_5Result; //url = "ReportesVarios/Reporte_Internet_5"; 
-                                }
-                            }
-                            else if (elOrden == 2) //Colonia y calle
-                            {
-                                if ((reporteSeleccionado == 3) || (reporteSeleccionado == 4) || (reporteSeleccionado == 10))//3 al corriente, 4 adelantados, 10 por instalar
-                                {
-                                    urlReporte = data.GetReporteInt_4Result; //url = "ReportesVarios/Reporte_Internet_4"; 
-                                }
-                                else if ((reporteSeleccionado == 6) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
-                                {
-                                    urlReporte = data.GetReporteInt_6Result; //url = "ReportesVarios/Reporte_Internet_6"; 
-                                }
+                            switch(elOrden){
+                                case "1":
+                                    if ((reporteSeleccionado == 3) || (reporteSeleccionado == 4) || (reporteSeleccionado == 10))//3 al corriente, 4 adelantados, 10 por instalar
+                                    {
+                                        urlReporte = data.GetReporteInt_3Result;//url = "ReportesVarios/Reporte_Internet_3"; 
+                                    }
+                                    else if ((reporteSeleccionado == 6) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+                                    {
+                                        urlReporte = data.GetReporteInt_5Result; //url = "ReportesVarios/Reporte_Internet_5"; 
+                                    }
+                                    break;
+                                case "2":           
+                                      if ((reporteSeleccionado == 3) || (reporteSeleccionado == 4) || (reporteSeleccionado == 10))//3 al corriente, 4 adelantados, 10 por instalar
+                                    {
+                                        urlReporte = data.GetReporteInt_4Result; //url = "ReportesVarios/Reporte_Internet_4"; 
+                                    }
+                                    else if ((reporteSeleccionado == 6) || (reporteSeleccionado == 8) || (reporteSeleccionado == 9) || (reporteSeleccionado == 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+                                    {
+                                        urlReporte = data.GetReporteInt_6Result; //url = "ReportesVarios/Reporte_Internet_6"; 
+                                    }
+                                    break;
                             }
                         }
                     }
@@ -1828,8 +1830,6 @@ angular.module('softvApp')
                     vm.reporteUrl = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/reportes/' + urlReporte);
                 });
         }
-
-
 
 
 

@@ -113,26 +113,28 @@ angular.module('softvApp')
 
 			if (reporteSeleccionado === 13)  // 13 ciudad
 			{
-				if (elOrden === 1) {
-					if (laBaja === 0)//cualquiera SIN bajas
-					{
-						rutaServicio = paths.ReporteDig_12; // url = 'ReportesVarios/Reporte_Digital_12'; 
-					}
-					else if (laBaja === 1) //cualquiera CON bajas
-					{
-						rutaServicio = paths.ReporteDig_13; // url = 'ReportesVarios/Reporte_Digital_13'; 
-					}
-				}
-				else if (elOrden === 2) {
-					if (laBaja === 0)//cualquiera SIN bajas
-					{
-						rutaServicio = paths.ReporteDig_15; // url = 'ReportesVarios/Reporte_Digital_15';
-					}
-					if (laBaja === 1)  //cualquiera CON bajas
-					{
-						rutaServicio = paths.ReporteDig_14; // url = 'ReportesVarios/Reporte_Digital_14'; 
-					}
-				}
+				switch(elOrden){
+                    case '1':
+	            		if (laBaja === 0)//cualquiera SIN bajas
+						{
+							rutaServicio = paths.ReporteDig_12; // url = 'ReportesVarios/Reporte_Digital_12'; 
+						}
+						else if (laBaja === 1) //cualquiera CON bajas
+						{
+							rutaServicio = paths.ReporteDig_13; // url = 'ReportesVarios/Reporte_Digital_13'; 
+						}
+                        break;
+                    case '2':           
+	                   if (laBaja === 0)//cualquiera SIN bajas
+						{
+							rutaServicio = paths.ReporteDig_15; // url = 'ReportesVarios/Reporte_Digital_15';
+						}
+						if (laBaja === 1)  //cualquiera CON bajas
+						{
+							rutaServicio = paths.ReporteDig_14; // url = 'ReportesVarios/Reporte_Digital_14'; 
+						}
+                    	break;
+                    }
 			}
 			else if (reporteSeleccionado === 14) // 14 resumen por colonia y status
 			{
@@ -143,60 +145,58 @@ angular.module('softvApp')
 				{   //Contrato | Colonia y Calle; Orden = 1 | 2              
 					if ((reporteSeleccionado === 1) || (reporteSeleccionado === 2) || (reporteSeleccionado === 7)) //1 desconectados, 2 suspendidos, 7 por pagar 
 					{
-						rutaServicio = paths.ReporteDig_1;// url = 'ReportesVarios/Reporte_Digital_1'; 
-
-
+						rutaServicio = paths.ReporteDig_1;// url = 'ReportesVarios/Reporte_Digital_1';
 					}
 					else if (reporteSeleccionado === 12)// 12 paquetes de cortesía
 					{
 						rutaServicio = paths.ReporteDig_4; //url = 'ReportesVarios/Reporte_Digital_4';
 					}
-					if (elOrden === 1) //Contrato
-					{
-						if ((reporteSeleccionado === 3) || (reporteSeleccionado === 10))//3 al corriente, 10 por instalar
-						{
-							rutaServicio = paths.ReporteDig_2; //url = 'ReportesVarios/Reporte_Digital_2'; 
-						}
-						else if (reporteSeleccionado === 4) // 4 adelantados
-						{
-							rutaServicio = paths.ReporteDig_3; //url = 'ReportesVarios/Reporte_Digital_3'; 
-						}
-						//else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 9) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
-						//{    rutaServicio = paths.ReporteDig_6; //url = 'ReportesVarios/Reporte_Digital_6'; 
-						//}
-						else if (reporteSeleccionado === 9)// 9 cancelaciones
-						{
-							rutaServicio = paths.ReporteDig_6;  //url = 'ReportesVarios/Reporte_Digital_6'; 
-						}
-						else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 11 fueras de área
-						{
-							rutaServicio = paths.ReporteDig_16; //url = 'ReportesVarios/Reporte_Digital_6'; 
-						}
+						switch(elOrden){
+	                    case '1':
+		            		if ((reporteSeleccionado === 3) || (reporteSeleccionado === 10))//3 al corriente, 10 por instalar
+							{
+								rutaServicio = paths.ReporteDig_2; //url = 'ReportesVarios/Reporte_Digital_2'; 
+							}
+							else if (reporteSeleccionado === 4) // 4 adelantados
+							{
+								rutaServicio = paths.ReporteDig_3; //url = 'ReportesVarios/Reporte_Digital_3'; 
+							}
+							//else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 9) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+							//{    rutaServicio = paths.ReporteDig_6; //url = 'ReportesVarios/Reporte_Digital_6'; 
+							//}
+							else if (reporteSeleccionado === 9)// 9 cancelaciones
+							{
+								rutaServicio = paths.ReporteDig_6;  //url = 'ReportesVarios/Reporte_Digital_6'; 
+							}
+							else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 11 fueras de área
+							{
+								rutaServicio = paths.ReporteDig_16; //url = 'ReportesVarios/Reporte_Digital_6'; 
+							}
 
-						else if (reporteSeleccionado === 6)// 6 contrataciones
-						{
-							rutaServicio = paths.ReporteDig_7; //url = 'ReportesVarios/Reporte_Digital_7'; 
-						}
-					}
-					else if (elOrden === 2) // Colonia y calle
-					{
-						if ((reporteSeleccionado === 3) || (reporteSeleccionado === 10))//3 al corriente, 10 por instalar
-						{
-							rutaServicio = paths.ReporteDig_8; //url = 'ReportesVarios/Reporte_Digital_8'; 
-						}
-						else if (reporteSeleccionado === 4)// 4 adelantados
-						{
-							rutaServicio = paths.ReporteDig_9; //url = 'ReportesVarios/Reporte_Digital_9'; 
-						}
-						else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 9) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
-						{
-							rutaServicio = paths.ReporteDig_11; //url = 'ReportesVarios/Reporte_Digital_11'; 
-						}
-						else if (reporteSeleccionado === 6)// 6 contrataciones
-						{
-							rutaServicio = paths.ReporteDig_10; //url = 'ReportesVarios/Reporte_Digital_10'; 
-						}
-					}
+							else if (reporteSeleccionado === 6)// 6 contrataciones
+							{
+								rutaServicio = paths.ReporteDig_7; //url = 'ReportesVarios/Reporte_Digital_7'; 
+							}
+	                        break;
+	                    case '2':           
+		                   if ((reporteSeleccionado === 3) || (reporteSeleccionado === 10))//3 al corriente, 10 por instalar
+							{
+								rutaServicio = paths.ReporteDig_8; //url = 'ReportesVarios/Reporte_Digital_8'; 
+							}
+							else if (reporteSeleccionado === 4)// 4 adelantados
+							{
+								rutaServicio = paths.ReporteDig_9; //url = 'ReportesVarios/Reporte_Digital_9'; 
+							}
+							else if ((reporteSeleccionado === 5) || (reporteSeleccionado === 8) || (reporteSeleccionado === 9) || (reporteSeleccionado === 11))//5 contrataciones principales, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+							{
+								rutaServicio = paths.ReporteDig_11; //url = 'ReportesVarios/Reporte_Digital_11'; 
+							}
+							else if (reporteSeleccionado === 6)// 6 contrataciones
+							{
+								rutaServicio = paths.ReporteDig_10; //url = 'ReportesVarios/Reporte_Digital_10'; 
+							}
+	                        break;
+	                    }
 				}
 				else if (servSelec === 2)// ---------------- S E R V I C I O   I N T E R N E T
 				{
@@ -213,9 +213,10 @@ angular.module('softvApp')
 					{
 						rutaServicio = paths.ReporteInt_7; //url = 'ReportesVarios/Reporte_Internet_7'; 
 					}
-					if (elOrden === 1) //Contrato
-					{
-						if ((reporteSeleccionado === 3) || (reporteSeleccionado === 4) || (reporteSeleccionado === 10))//3 al corriente, 4 adelantados, 10 por instalar
+					switch(elOrden){
+                    case '1':
+                   
+            			if ((reporteSeleccionado === 3) || (reporteSeleccionado === 4) || (reporteSeleccionado === 10))//3 al corriente, 4 adelantados, 10 por instalar
 						{
 							rutaServicio = paths.ReporteInt_3; //url = 'ReportesVarios/Reporte_Internet_3'; 
 						}
@@ -223,18 +224,20 @@ angular.module('softvApp')
 						{
 							rutaServicio = paths.ReporteInt_5; //url = 'ReportesVarios/Reporte_Internet_5'; 
 						}
-					}
-					else if (elOrden === 2) //Colonia y calle
-					{
-						if ((reporteSeleccionado === 3) || (reporteSeleccionado === 4) || (reporteSeleccionado === 10))//3 al corriente, 4 adelantados, 10 por instalar
+
+                        break;
+                    case '2':           
+                       
+                   		if ((reporteSeleccionado ===  3) || (reporteSeleccionado ===  4) || (reporteSeleccionado === 10))//3 al corriente, 4 adelantados, 10 por instalar
 						{
 							rutaServicio = paths.ReporteInt_4; //url = 'ReportesVarios/Reporte_Internet_4'; 
 						}
-						else if ((reporteSeleccionado === 6) || (reporteSeleccionado === 8) || (reporteSeleccionado === 9) || (reporteSeleccionado === 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
+						else if ((reporteSeleccionado ===  6) || (reporteSeleccionado === 8) || (reporteSeleccionado ===  9) || (reporteSeleccionado === 11))//6 contrataciones, 8 instalaciones, 9 cancelaciones, 11 fueras de área
 						{
 							rutaServicio = paths.ReporteInt_6; //url = 'ReportesVarios/Reporte_Internet_6'; 
 						}
-					}
+                        break;
+                    }
 				}
 			}
 			//---------------------------------------------------
